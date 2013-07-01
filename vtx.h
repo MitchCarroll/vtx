@@ -3,7 +3,7 @@
 
 #include <cmath> //for trig
 
-//some trig functions using 30 degrees in lieu of radians
+//some trig functions using 360 degrees in lieu of radians
 #define DEG2RAD(degree) ((degree) * (3.141592654f / 180.0f))
 #define RAD2DEG(radian) ((radian) * (180.0f / 3.141592654f))
 #define Sin(angle) (sin(DEG2RAD(angle))) //SOH CAH TOA :)
