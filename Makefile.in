@@ -750,7 +750,7 @@ uninstall-am: uninstall-libLTLIBRARIES
 
 
 vtx_wrap.cpp: vtx.i vtx.h
-	swig -c++ -guile -Linkage module -proxy -scmstub -package vtx \
+	swig -c++ -guile -Linkage module -proxy -package vtx \
 		-o vtx_wrap.cpp vtx.i
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
