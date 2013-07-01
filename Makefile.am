@@ -1,11 +1,10 @@
-#ACLOCAL_AMFLAGS = -I m4
-AM_CXXFLAGS = "-I$(top_srcdir) $AM_CXXFLAGS"
-#lib_LTLIBRARIES = libvtx.la
-#libvtx_ladir = $(includedir)/vtx
-#libvtx_la_HEADERS = vtx.h
-#libvtx_la_SOURCES = vtx.cpp $(libvtx_la_HEADERS)
+ACLOCAL_AMFLAGS = -I m4
+AM_CPPFLAGS = "-I$(top_srcdir) $AM_CPPFLAGS"
+AM_CFLAGS = @GUILE_CFLAGS@
+lib_LTLIBRARIES = libvtx.la
+libvtx_la_SOURCES = vtx.h vtx.cpp vtx_wrap.cpp
+libvtx_la_LIBADD = @GUILE_LIBS@
 
-lib_LIBRARIES = libvtx.a
-libvtx_adir = $(includedir)/vtx
-libvtx_a_HEADERS = vtx.h
-libvtx_a_SOURCES = vtx.cpp $(libvtx_a_HEADERS)
+vtx_wrap.cpp: vtx.i vtx.h
+	swig -c++ -guile -Linkage module -proxy -scmstub -package vtx \
+		-o vtx_wrap.cpp vtx.i
